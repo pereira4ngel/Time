@@ -1,27 +1,3 @@
-
---defesas e entrega em 04/12
-
---Utilizando a modelagem de um campeonato de basquete:
-
---Time (Codigo PK, Nome)
---Jogador (Codigo PK, Nome, Time FK)
---Jogo (Codigo PK, Time1 FK, Time2 FK, DataHora)
---JogoJogador (Jogo PK FK, Jogador PK FK, Cestas2, Cestas3, TirosLivres)
-
---Observações:
---* 10 times de 10 jogadores, 5 em quadra e 5 no banco.
---* Sem limite da quantidade de substituições durante os jogos.
---* Todos os times jogam uma única vez contra todos os outros times.
---* 2 pontos pela vitória, 1 ponto pelo empate.
-
---Considerando o jogo entre os times Mosqueteiro Azul e Saci Vermelho ocorrido as 20:30 do último sábado:
---1) Atribuir uma cesta de 3 pontos ao jogador Joao Palito do time Mosqueteiro Azul.
---2) Alterar a cesta de 2 pontos atribuída erroneamente ao jogador Joao Palito do time Mosqueteiro Azul para o jogador Pedro Cestinha do mesmo time.
---Considerando os jogos realizados até o momento:
---3) Mostrar os jogadores que pontuaram em todos os jogos de seus times.
---5) Mostrar o placar final de cada jogo.
---6) Mostrar a tabela de classificação do campeonato.
-
 drop table jogojogador,
 drop table jogo,
 drop table jogador,
@@ -204,18 +180,3 @@ insert into jogojogador (jogo, jogador, cesta2, cesta3, tiroslivres) values (1, 
 insert into jogojogador (jogo, jogador, cesta2, cesta3, tiroslivres) values (1, 10, 0, 0, 0);
 /*========================================================================================*/
 
---3) Mostrar os jogadores que pontuaram em todos os jogos de seus times.
-select jogador.nome
-from jogojogador
-join jogador on jogojogador.jogador = jogador.codigo
-join time on jogador.time = time.codigo
-where (cesta2 > 0) or (cesta3 > 0) or (tiroslivres > 0);
-
---5) Mostrar o placar final de cada jogo.
-select time.nome, count(cesta2) as cesta2, count(cesta3) as cesta3, count(tiroslivres) as tiroslivres
-from JogoJogador
-join jogador on jogojogador.jogador = jogador.codigo
-join time on jogador.time = time.codigo
-where (cesta2 > 0) or (cesta3 > 0) or (tiroslivres > 0)
-      and jogador.time = time.codigo
-group by time.nome;
