@@ -18,7 +18,13 @@ Utilizando a modelagem de um campeonato de basquete:
 Considerando o jogo entre os times Mosqueteiro Azul e Saci Vermelho ocorrido as 20:30 do último sábado:
 
 
+d - > dia
+m -> mes
+a -> ano
 
+k = d + 2m + [3*(m + 1) / 5] + a + a/4 - a/100 + a/100 + 2
+
+dia da semana = k/7
 
 
 
