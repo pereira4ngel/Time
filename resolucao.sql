@@ -1,5 +1,11 @@
 /*Resoluções*/
+--1) Atribuir uma cesta de 3 pontos ao jogador Joao Palito do time Mosqueteiro Azul.
 
+INSERT INTO jogojogador(jogo, jogador, cesta2, cesta3, tiroslivres)
+SELECT jogo, jogador, cesta2, 3, tiroslivres FROM jogojogador
+join jogador on jogojogador.jogador = jogador.codigo
+join time on jogador.time = time.codigo
+WHERE lower(jogador.nome) like 'joao palito' and lower(time.nome) like 'mosqueteiro azul'
 
 
 
