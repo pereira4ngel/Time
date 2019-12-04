@@ -14,6 +14,35 @@ join jogador on jogojogador.jogador = jogador.codigo
 join time on jogador.time = time.codigo
 WHERE lower(jogador.nome) like 'joao palito' and lower(time.nome) like 'mosqueteiro azul'
 
+2)
+Alterar a cesta de 2 pontos atribuída erroneamente ao jogador Joao Palito do time Mosqueteiro Azul para o jogador Pedro Cestinha do mesmo time.
+
+
+
+
+INSERT INTO jogojogador(jogo, jogador, cesta2, cesta3, tiroslivres)
+
+update jogojogador
+set cesta2 = 2
+where jogador = (SELECT jogador.nome FROM jogojogador
+join jogador on jogojogador.jogador = jogador.codigo
+join time on jogador.time = time.codigo
+WHERE lower(jogador.nome) like 'joao palito' and lower(time.nome) like 'mosqueteiro azul')
+
+
+update jogojogador
+set cesta2 = 0
+where jogador = (SELECT jogador.nome FROM jogojogador
+join jogador on jogojogador.jogador = jogador.codigo
+join time on jogador.time = time.codigo
+WHERE lower(jogador.nome) like 'Pedro Cestinha' and lower(time.nome) like 'mosqueteiro azul')
+
+
+
+
+
+
+
 
 --3) Mostrar os jogadores que pontuaram em todos os jogos de seus times.
 select jogador.nome
