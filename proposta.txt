@@ -32,5 +32,6 @@ dia da semana = k/7
 2) Alterar a cesta de 2 pontos atribuída erroneamente ao jogador Joao Palito do time Mosqueteiro Azul para o jogador Pedro Cestinha do mesmo time.
 Considerando os jogos realizados até o momento:
 3) Mostrar os jogadores que pontuaram em todos os jogos de seus times.
+4) Mostrar os jogadores que fizeram cestas de 3 pontos em 3 jogos consecutivos de seus times.
 5) Mostrar o placar final de cada jogo.
 6) Mostrar a tabela de classificação do campeonato.
